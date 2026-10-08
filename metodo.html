@@ -6,16 +6,19 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;600&display=swap">
 <style>
 /* Layout: nota curta em coluna única; mesma família visual da nota técnica do modelo */
-:root{color-scheme:light;--bg:#fcfcfb;--panel:#f3f2ef;--fg:#141413;--fg-2:#52514e;--muted:#8a8984;--rule:#e2e1dc;
+:root{color-scheme:light;--bg:#fcfcfb;--panel:#f3f2ef;--fg:#141413;--fg-2:#52514e;--muted:#6b6a65;--rule:#e2e1dc;
 --a:#2a78d6;--good:#1f7a3a;--bad:#b3403a;
 --serif:"Source Serif 4",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans",-apple-system,"Segoe UI",sans-serif}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#1a1a19;--panel:#242422;--fg:#f4f3ee;
---fg-2:#c3c2b7;--muted:#8f8e86;--rule:#35342f;--a:#3987e5;--good:#5cb874;--bad:#e3776f}}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#1a1a19;--panel:#242422;--fg:#f4f3ee;--fg-2:#c3c2b7;--muted:#8f8e86;
+--fg-2:#c3c2b7;--muted:#a3a299;--rule:#35342f;--a:#3987e5;--good:#5cb874;--bad:#e3776f}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#1a1a19;--panel:#242422;--fg:#f4f3ee;--fg-2:#c3c2b7;--muted:#a3a299;
 --rule:#35342f;--a:#3987e5;--good:#5cb874;--bad:#e3776f}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.62 var(--serif)}
 main{max-width:780px;margin:0 auto;padding-inline:16px;padding-block:40px 80px}
+a{color:inherit}
+header .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+header .top a{font:13px/1.4 var(--sans);color:var(--fg-2)}
 header .kicker{font:600 12px/1.4 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 h1{font:600 34px/1.2 var(--serif);margin:6px 0 10px;text-wrap:balance}
 .lede{font-size:19px;color:var(--fg-2);margin:0 0 8px}
@@ -35,23 +38,25 @@ table{border-collapse:collapse;font:14px/1.4 var(--sans);font-variant-numeric:ta
 th,td{padding:6px 9px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
 th{color:var(--fg-2);font-weight:600;font-size:12.5px}
 th:first-child,td:first-child{text-align:left}
-td.best{font-weight:600;color:var(--a)}
+td.best{font-weight:600;background:var(--panel)}
 td.hl{font-weight:600}
 tr.sep td{color:var(--fg-2);font-weight:600;text-align:left;padding-top:12px}
 caption{caption-side:bottom;text-align:left;font:12.5px/1.5 var(--sans);color:var(--muted);padding-top:8px;white-space:normal}
 ul{padding-left:22px;margin:0 0 14px}li{margin-bottom:6px}
+footer p{margin:0 0 8px}
 footer{margin-top:56px;padding-top:14px;border-top:1px solid var(--rule);font:13px/1.55 var(--sans);color:var(--muted)}
 code{font:14px/1 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--panel);padding:1px 5px;border-radius:4px}
 </style></head><body><main>
 <header>
-<div class="kicker">Apuração do TSE em tempo real · nota de método</div>
+<div class="top"><div class="kicker">Apuração projetada · nota de método</div><a href="./">Voltar ao painel</a></div>
 <h1>Como a apuração é projetada</h1>
-<p class="lede">Este é o modelo usado na noite do 1º turno de 2026. Cada município que já apurou é projetado pelo próprio parcial, e cada município que ainda não apurou recebe o resultado de 2022 somado à mudança média do seu estado. As seções 1 a 6 descrevem a versão por município; a seção 7 trata das zonas eleitorais, que entraram na versão usada na noite, e mostra como ela se saiu.</p>
+<p class="lede">O <a href="./">painel</a> usou este modelo na noite do 1º turno de 2026. Um município que já começou a apurar é projetado pelo próprio parcial; o que ainda não apurou recebe o resultado de 2022 somado à mudança média do seu estado.</p>
+<p style="font:15px/1.55 var(--sans);color:var(--fg-2)">As seções 1 a 6, com os seus números, tratam da versão por município. Na noite de 04/10 rodou uma versão que trata as grandes cidades zona a zona, descrita na seção 7 junto com o resultado da noite.</p>
 </header>
 
-<h2><span class="n">1</span>A ideia</h2>
-<p>Para cada município, compara-se a parcela atual do candidato no parcial com a parcela que o candidato do mesmo campo teve ali em 2022. A mudança média dos municípios de um estado que já apuraram é aplicada ao resultado de 2022 dos que ainda não apuraram, cada um ponderado pelos votos válidos esperados, e o resultado nacional é a soma de todos.</p>
-<p>O detalhe que se mostrou mais importante é que um município que já começou a apurar, mesmo que pouco, é projetado pelo próprio parcial.</p>
+<h2><span class="n">1</span>Comparar cada município com a eleição anterior</h2>
+<p>Para cada município, o modelo compara a parcela atual do candidato no parcial com a que o candidato do mesmo campo teve ali em 2022. A mudança média dos municípios de um estado que já apuraram é aplicada ao resultado de 2022 dos que ainda não apuraram. O resultado nacional é a soma de todos, cada município pesando pelos votos válidos esperados.</p>
+<p>O que mais reduziu o erro foi projetar pelo próprio parcial todo município que já começou a apurar, mesmo com poucas urnas. Antes deste modelo foi testada uma regressão do delta com o tamanho do município; ela aparece nas comparações abaixo como “modelo de regressão”.</p>
 
 <h2><span class="n">2</span>Os três tipos de município</h2>
 <p>A cada minuto, cada município se enquadra em um de três casos. Os números entre parênteses descrevem a noite do 1º turno de 2022 às 18h32, com 10% das seções apuradas.</p>
@@ -63,20 +68,20 @@ code{font:14px/1 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--pa
 <dt>Não apurou nada (3.684 municípios)</dt>
 <dd>Recebe o resultado da eleição-base mais a mudança média dos municípios do seu estado que já apuraram, e entra na soma com os votos válidos que deve ter.</dd>
 </dl>
-<div class="box"><p>Às 18h32, 9,6% dos votos válidos esperados já estavam contados, <b>54,4% eram o resto de municípios que tinham começado a apurar</b> (sobretudo capitais e cidades grandes, que apuram aos poucos) e 36,0% estavam em municípios sem nenhum voto. Mais da metade da projeção, portanto, depende do parcial das cidades grandes, e é nesse ponto que esta versão difere do modelo de regressão.</p></div>
+<div class="box"><p>Às 18h32, 9,6% dos votos válidos esperados já estavam contados, <b>54,4% eram o resto de municípios que tinham começado a apurar</b> (sobretudo capitais e cidades grandes, que apuram aos poucos) e 36,0% estavam em municípios sem nenhum voto. Mais da metade da projeção dependia, então, do parcial das cidades grandes. É aí que esta versão se separa do modelo de regressão.</p></div>
 
 <h2><span class="n">3</span>As contas</h2>
 <p>Para cada município <span class="m">$g$</span> que já reportou, o delta observado é</p>
 <div class="eq">$$ \Delta_g \;=\; \hat p_g \;-\; p^{b}_g , $$</div>
 <p>a parcela do candidato no parcial menos a parcela do candidato do mesmo campo na eleição-base. O delta médio da UF <span class="m">$u$</span> é a média ponderada desses deltas:</p>
 <div class="eq">$$ \bar\Delta_u \;=\; \frac{\sum_{g\in u} f_g\,W_g\,\Delta_g}{\sum_{g\in u} f_g\,W_g} , $$</div>
-<p>em que <span class="m">$f_g$</span> é a fração do eleitorado do município já apurada e <span class="m">$W_g$</span> são os votos válidos esperados. O peso <span class="m">$f_g W_g$</span> é, aproximadamente, o número de votos já contados: um município grande e bem apurado pesa muito, um pequeno com uma urna só pesa quase nada. Se a UF ainda não tem nenhum município apurado, usa-se a média nacional.</p>
+<p>em que <span class="m">$f_g$</span> é a fração do eleitorado do município já apurada e <span class="m">$W_g$</span> são os votos válidos esperados. O peso <span class="m">$f_g W_g$</span> é, aproximadamente, o número de votos já contados: um município grande e bem apurado pesa muito, um pequeno com uma urna só pesa quase nada. Se a UF ainda não tem nenhum município apurado, entra a média nacional.</p>
 <p>A projeção de cada município é</p>
 <div class="eq">$$ \hat v_g \;=\; \begin{cases} C_g\,\hat p_g \;+\; R_g\,\hat p_g, \quad R_g = (1-f_g)\,C_g/f_g & \text{se já apurou algo}\\[4pt] W_g\,\big(p^{b}_g + \bar\Delta_{u(g)}\big) & \text{se não apurou nada} \end{cases} $$</div>
-<p>e a projeção nacional é a soma dos votos projetados dividida pela soma dos válidos, contados mais estimados. A estimativa central não tem parâmetro a calibrar; a margem de erro tem um (seção 7).</p>
+<p>e a projeção nacional é a soma dos votos projetados dividida pela soma dos válidos, contados mais estimados. A estimativa central não tem parâmetro calibrado. A margem de erro tem um, descrito na seção 7.</p>
 
 <h2><span class="n">4</span>Exemplo: 1º turno de 2022, às 18h32</h2>
-<p>O ensaio que reproduz as condições da noite de 04/10 usa como base o 1º turno de 2018, comparando Lula com Haddad. O parcial sem correção dava a Lula 42,9%.</p>
+<p>O ensaio mais parecido com 2026 é o 1º turno de 2022 comparado com o de 2018 (Lula com Haddad), porque nos dois a base é a eleição de quatro anos antes. Às 18h32, com 10% das seções apuradas, o parcial do TSE dava a Lula 42,9%. Os números desta seção são da versão por município.</p>
 
 <h3>Passo 1: o delta médio de cada estado</h3>
 <div class="tw"><table>
@@ -99,7 +104,7 @@ code{font:14px/1 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--pa
 </table></div>
 
 <h3>Passo 2: cidades que já tinham começado a apurar</h3>
-<p>São projetadas pelo próprio parcial. A tabela mostra por que isso funcionou bem em 2022.</p>
+<p>São projetadas pelo próprio parcial.</p>
 <div class="tw"><table>
 <thead><tr><th>município</th><th>apurado</th><th>válidos contados</th><th>válidos estimados que faltam</th><th>projeção = parcial</th><th>final real</th></tr></thead>
 <tbody>
@@ -115,7 +120,7 @@ code{font:14px/1 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--pa
 </table></div>
 
 <h3>Passo 3: cidades sem nenhum voto</h3>
-<p>Recebem o resultado da eleição-base somado ao delta do estado. A tabela mostra as cinco maiores que ainda não tinham apurado.</p>
+<p>Recebem o resultado da eleição-base somado ao delta do estado. Abaixo, as cinco maiores que ainda não tinham apurado.</p>
 <div class="tw"><table>
 <thead><tr><th>município</th><th>base (Haddad 2018)</th><th>delta da UF</th><th>projeção</th><th>final real</th></tr></thead>
 <tbody>
@@ -125,13 +130,13 @@ code{font:14px/1 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--pa
 <tr><td>Santo André (SP)</td><td>17,2</td><td>+22,3</td><td class="hl">39,5</td><td>42,7</td></tr>
 <tr><td>Osasco (SP)</td><td>18,8</td><td>+22,3</td><td class="hl">41,1</td><td>45,7</td></tr>
 </tbody>
-<caption>Aqui o erro municipal é maior, de 0,7 a 4,6 pontos, porque o delta médio do estado não distingue a periferia metropolitana do interior. Esses erros se compensam em parte na soma nacional.</caption>
+<caption>Aqui o erro municipal é maior, de 0,7 a 4,6 pontos, provavelmente porque o delta médio do estado não distingue a periferia metropolitana do interior. Esses erros se compensam em parte na soma nacional.</caption>
 </table></div>
 
 <h3>Resultado</h3>
-<p>Somando tudo, a projeção às 18h32 foi <b>48,43%</b>, idêntica ao resultado final. O parcial sem correção estava em 42,9%. O acerto exato naquele minuto teve uma parcela de sorte; nos outros pontos da noite, o erro variou entre −0,5 e +0,9 ponto (seção 5).</p>
+<p>Somando tudo, a projeção às 18h32 foi <b>48,43%</b>, igual ao resultado final. O parcial do TSE estava em 42,9%. O acerto exato naquele minuto foi em parte sorte. Nos outros marcos da noite, o erro foi de −0,5 a +0,9 ponto (seção 5), e a versão com zonas, que rodou em 2026, errava +0,34 ponto nesse mesmo minuto.</p>
 
-<h2><span class="n">5</span>Desempenho nos três ensaios</h2>
+<h2><span class="n">5</span>Nos três ensaios, o erro ficou abaixo de 1,2 ponto a partir de 5% apurado</h2>
 <div class="tw"><table>
 <thead><tr><th>% apurado</th><th>2º turno 2022<br>(base 1º turno 2022)</th><th>1º turno 2022<br>(base 2018)</th><th>1º turno 2018<br>(base 2014)</th></tr></thead>
 <tbody>
@@ -143,7 +148,7 @@ code{font:14px/1 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--pa
 <tr><td>50%</td><td>−0,44</td><td>−0,34</td><td>−0,83</td></tr>
 <tr><td>70%</td><td>−0,28</td><td>−0,15</td><td>−0,60</td></tr>
 </tbody>
-<caption>Projeção menos resultado final, parcela de Lula (ou Haddad em 2018), em pontos percentuais. O ensaio de 2018 usa os votos reais de 2018 com a ordem de chegada de 2022, porque os boletins de 2018 não têm hora de chegada.</caption>
+<caption>Versão por município. Projeção menos resultado final, parcela de Lula (de Haddad em 2018), em pontos percentuais. O ensaio de 2018 usa os votos reais de 2018 com a ordem de chegada de 2022, porque os boletins de 2018 não têm hora de chegada.</caption>
 </table></div>
 <h3>Comparação com as outras versões</h3>
 <div class="tw"><table>
@@ -155,23 +160,24 @@ code{font:14px/1 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--pa
 <tr><td><b>média dos três</b></td><td>0,74</td><td>0,76</td><td class="best">0,57</td></tr>
 <tr><td><b>pior caso</b></td><td>1,54</td><td class="best">0,81</td><td>0,85</td></tr>
 </tbody>
-<caption>“Média por UF, versão anterior” é a mesma conta, mas usando só 14% do parcial do próprio município para o que falta dele (com 50% apurado) e completando com a média do estado. A única diferença para a versão desta página é quanto se confia no parcial local.</caption>
+<caption>Média dos sete marcos da tabela anterior, de 2% a 70% apurado. O painel e o README medem o erro de outro jeito, minuto a minuto de 2% a 99%, e com a versão por zona; por isso os números de lá são menores (0,13 e 0,17 ponto nos ensaios de 2022). “Média por UF, versão anterior” é a mesma conta, mas usa só 14% do parcial do próprio município para o que falta dele (com 50% apurado) e completa com a média do estado. A única diferença para a versão desta página é quanto se confia no parcial local.</caption>
 </table></div>
 
 <h2><span class="n">6</span>Hipóteses e fontes de erro</h2>
 <ul>
 <li><b>O parcial de um município representa o resto dele.</b> Em 2022 isso valeu bem nas capitais, mesmo com 1% a 3% apurado. Se numa cidade grande as primeiras urnas vierem sistematicamente de um tipo de bairro, o erro vai direto para a projeção, porque mais da metade dela vem desses parciais. Em Teresina, com 19% apurado, o parcial estava 3,3 pontos abaixo do final.</li>
-<li><b>Quem não apurou muda como a média do seu estado.</b> Os municípios que chegam tarde são menores e mais rurais, e a média do estado não incorpora essa diferença. É a origem do erro de −1,1 ponto no ensaio de 2018 entre 10% e 30% apurado.</li>
+<li><b>Quem não apurou muda como a média do seu estado.</b> Os municípios que chegam tarde são menores e mais rurais, e a média do estado não incorpora essa diferença. É a explicação mais provável para o erro de −1,1 ponto no ensaio de 2018 entre 10% e 30% apurado.</li>
 <li><b>No começo da noite, a média de um estado pode vir de poucos municípios.</b> Como não há encolhimento, se um estado tem três municípios pequenos apurados, a média deles vale para o estado inteiro, e os erros com 2% apurado são maiores.</li>
 <li><b>O tamanho do que falta vem do comparecimento observado.</b> Se as primeiras urnas de uma cidade tiverem comparecimento atípico, o peso dela na soma fica errado.</li>
 </ul>
-<div class="box"><p>O modelo de regressão errou fora da amostra porque estimava uma relação entre porte e delta nos municípios pequenos e a aplicava às capitais. Nesta versão, cada capital é projetada pelo próprio parcial assim que a primeira urna é apurada.</p></div>
+<div class="box"><p>O modelo de regressão errou quase o dobro fora da amostra (1,54 contra 0,85 ponto no ensaio de 2018). A explicação mais provável é que ele estimava uma relação entre porte e delta nos municípios pequenos e a aplicava às capitais. Nesta versão, cada capital é projetada pelo próprio parcial assim que a primeira urna é apurada.</p></div>
 
-<h2><span class="n">7</span>Zonas eleitorais e a noite de 04/10/2026</h2>
-<p>Na versão que rodou ao vivo, as 190 cidades com mais de uma zona eleitoral são tratadas zona a zona. Uma zona que já apurou fica com o próprio parcial; uma zona sem voto recebe o delta médio das outras zonas da mesma cidade; uma cidade sem voto recebe o delta do estado. Isso reduziu o erro nos três ensaios (0,48 → 0,40, 0,37 → 0,31 e 0,85 → 0,58 ponto), sobretudo no pior caso.</p>
-<p>A margem de erro soma um bootstrap sobre as unidades que já apuraram e um termo sistemático de <span class="m">$0{,}006\sqrt{1-\pi}$</span>, em que <span class="m">$\pi$</span> é a fração apurada. Abaixo de 2% apurado a estimativa é marcada como instável. Cada arquivo do TSE é conferido antes de entrar (campos presentes, votos que não diminuem, válidos abaixo do comparecimento, seções coerentes com o eleitorado, carimbo de horário que não volta).</p>
+<h2><span class="n">7</span>Zonas eleitorais e o resultado na noite de 04/10/2026</h2>
+<p>Na versão que rodou ao vivo, as 190 cidades com mais de uma zona eleitoral são tratadas zona a zona. Uma zona que já apurou fica com o próprio parcial; uma zona sem voto recebe o delta médio das outras zonas da mesma cidade; uma cidade sem voto recebe o delta do estado. Na medida da seção 5, isso reduziu o erro nos três ensaios: de 0,48 para 0,40 ponto, de 0,37 para 0,31 e, no pior caso, de 0,85 para 0,58.</p>
+<p>A margem de erro soma um bootstrap sobre as unidades que já apuraram e um termo sistemático de <span class="m">$0{,}006\sqrt{1-\pi}$</span>, em que <span class="m">$\pi$</span> é a fração apurada. Abaixo de 2% apurado a estimativa é marcada como instável. O painel diz que a diferença entre os dois candidatos está dentro da margem de erro quando os intervalos de 95% dos dois se sobrepõem; no 2º turno, quando o intervalo de um deles inclui 50%. O painel não mostra probabilidade de vitória.</p>
+<p>Cada arquivo do TSE é conferido antes de entrar. Os campos têm de estar presentes, os votos não podem diminuir, os válidos ficam abaixo do comparecimento, as seções têm de ser coerentes com o eleitorado e o horário do arquivo não pode voltar.</p>
 <div class="tw"><table>
-<thead><tr><th>% apurado</th><th>hora</th><th>apurado no TSE</th><th>estimado</th><th>margem de 95%</th></tr></thead>
+<thead><tr><th>% apurado</th><th>hora</th><th>parcial do TSE</th><th>estimativa</th><th>margem de erro (95%)</th></tr></thead>
 <tbody>
 <tr><td>2%</td><td>17h29</td><td>−3,23</td><td class="hl">+0,32</td><td>−1,20 a +1,85</td></tr>
 <tr><td>5%</td><td>17h42</td><td>−4,01</td><td class="hl">+0,68</td><td>−0,54 a +1,90</td></tr>
@@ -180,11 +186,11 @@ code{font:14px/1 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--pa
 <tr><td>65%</td><td>19h14</td><td>−2,92</td><td class="hl">−0,27</td><td>−0,97 a +0,43</td></tr>
 <tr><td>85%</td><td>20h04</td><td>−1,67</td><td class="hl">−0,18</td><td>−0,63 a +0,28</td></tr>
 </tbody>
-<caption>1º turno de 2026, noite real. Parcela de Lula menos o resultado final (45,16%), em pontos percentuais. Erro médio de 2% a 99% apurado: 0,20 ponto (apurado no TSE: 1,95). A margem de 95% conteve o resultado em todas as leituras, e a estimativa ficou a menos de 1 ponto do final desde as 17h29; o apurado no TSE, desde as 20h38. No pico da apuração o estimador ficou para trás do gravador, e entre 18h48 e 20h04 houve intervalos de 25 a 50 minutos sem estimativa; por isso não há linhas para 50% e 70%.</caption>
+<caption>1º turno de 2026, noite real. Parcela de Lula menos o resultado final (45,16%), em pontos percentuais. De 2% a 99% apurado, o erro médio foi de 0,20 ponto na estimativa e de 1,95 ponto no parcial do TSE. A margem de erro de 95% conteve o resultado em todas as leituras. A estimativa ficou a menos de 1 ponto do final desde as 17h29; o parcial do TSE, desde as 20h38. Entre 18h48 e 20h04 o cálculo da estimativa atrasou em relação à coleta dos arquivos e houve intervalos de 25 a 50 minutos sem estimativa. Por isso não há linhas para 50% e 70%.</caption>
 </table></div>
 <p class="small" style="font:14px/1.55 var(--sans);color:var(--fg-2)">Esta versão foi comparada com as alternativas depois de os ensaios de 2022 terem sido vistos. A noite de 04/10/2026 é o primeiro teste que não foi usado para escolher nada.</p>
 
-<footer>Luís Meloni (FEA-USP). Dados: boletins de urna, votação por município e zona e resultados da Justiça Eleitoral (dados abertos e site de resultados do TSE). Versão de 05/10/2026.</footer>
+<footer><p>Dados: boletins de urna, votação por município e zona e resultados da Justiça Eleitoral (dados abertos e site de resultados do TSE). Versão de 08/10/2026. <a href="./">Painel</a> · <a href="https://github.com/lnmeloni/apuracao-2026">Repositório</a></p><p>Desenvolvido por Luis Meloni, com auxílio do Claude Code na implementação. As escolhas metodológicas, dados e conteúdo são de responsabilidade do autor; eventuais erros ou imprecisões são de minha responsabilidade.</p></footer>
 </main>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"
